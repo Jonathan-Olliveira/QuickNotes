@@ -52,7 +52,7 @@ public class AnotacaoDAO extends Anotacao{
         return anotacoes;
     }
     //metodo inserir
-    public void Inserir (String titulo, String conteudo, String data, int categoria_id) throws SQLException {
+    public void Inserir (String titulo, String conteudo, String data, String categoria_id) throws SQLException {
 
         // aqui vai o codigo que será executado do SQL
         String sql = "INSERT INTO anotacao VALUES(null,?,?,?,?)";
@@ -61,7 +61,7 @@ public class AnotacaoDAO extends Anotacao{
         statement.setString(1, titulo);
         statement.setString(2, conteudo);
         statement.setString(3, data);
-        statement.setInt(4, categoria_id);
+        statement.setString(4, categoria_id);
         statement.executeUpdate();
     }
     // metodo deletar
@@ -72,10 +72,14 @@ public class AnotacaoDAO extends Anotacao{
         statement.executeUpdate();
     }
     //metodo atualizar
-    public void update (String titulo, String conteudo, String data, int id_categoria) throws SQLException {
-        String sql = "UPDATE FROM anotacao WHERE id=(?) SET titulo=(?), ";
+    public void update (String titulo, String conteudo, String data, String id_categoria, String id) throws SQLException {
+        String sql = "UPDATE anotacao SET titulo=(?), conteudo=(?), data(?), caterogia_id=(?) WHERE id=(?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, titulo);
+        statement.setString(2, conteudo);
+        statement.setString(3, data);
+        statement.setString(4, id_categoria);
+        statement.setString(5,id);
         statement.executeUpdate();
     }
 

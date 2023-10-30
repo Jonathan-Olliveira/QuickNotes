@@ -29,7 +29,7 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "Categoria{" +
+        return "\nCategoria{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';

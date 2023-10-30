@@ -19,7 +19,13 @@ public class Main extends Anotacao{
         AnotacaoDAO ldoa =new AnotacaoDAO();
 
         int opcao;
-        String es;
+        int ident;
+        String title;
+        String cont;
+        String dat;
+        int cat;
+        String novaAnotacao;
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -35,37 +41,48 @@ public class Main extends Anotacao{
 
             if(opcao == 1){
                 AnotacaoDAO anotacaoDAO = new AnotacaoDAO();
-                System.out.println("Escreva a role: ");
-                String titulo = sc.nextLine();
-                es = sc.next();
-                System.out.println("Você digitou: " + es);
+                System.out.println("Escreva o titulo da nota: ");
+//              String titulo = sc.nextLine();
+                title = sc.next();
+                System.out.println("Escreva o conteudo da nota: ");
+                cont = sc.next();
+                System.out.println("Escreva a data da nota: ");
+                dat = sc.next();
+                System.out.println("Escreva a categoria da nota: \n1- Casa \n2- Trabalho \n3- Estudo \n4 -Viagem \n5- Lazer");
+                cat = sc.nextInt();
+                System.out.println("Sua nota foi Salva");
 
-                ldoa.Inserir("loop","source","2023/10/23","2");
+                ldoa.Inserir("" + title,"" +cont,""+dat,""+cat);
 
 
             }
             else if (opcao == 2){
                 AnotacaoDAO anotacaoDAO = new AnotacaoDAO();
-                int id;
 
-                System.out.println("Quak id deseja deletar ?: ");
-                sc.nextLine();
-                id = sc.nextInt();
+                System.out.println("Qual id deseja deletar ?: ");
+                ident = sc.nextInt();
+                ldoa.delete(""+ident);
+                System.out.println("o id " +ident +" foi deletado!");
 
 
 
             }
             if (opcao == 3){
                 AnotacaoDAO anotacaoDAO = new AnotacaoDAO();
-                String novaAnotacao;
-                int id;
 
-                System.out.println("Digite o texto que deseja atualizar: ");
-                novaAnotacao = sc.nextLine();
-                System.out.println("Digite o ID: ");
-                id = sc.nextInt();
+                System.out.println("Escreva o novo titulo da nota: ");
+                title = sc.next();
+                System.out.println("Escreva o novo conteudo da nota: ");
+                cont = sc.next();
+                System.out.println("Escreva a nova data da nota: ");
+                dat = sc.next();
+                System.out.println("Escreva a nova categoria da nota: \n1- Casa \n2- Trabalho \n3- Estudo \n4 -Viagem \n5- Lazer");
+                cat = sc.nextInt();
+                System.out.println("Digite o id da anotação que deseja atualizar: ");
+                ident = sc.nextInt();
 
-                ldoa.update("Estudo","SQL","2023/10/24","2");
+
+                ldoa.update("" +title,""+cont,""+dat,""+cat,""+ident);
             }
 
 
@@ -74,26 +91,19 @@ public class Main extends Anotacao{
 //                List<Anotacao> anotacao = anotacaoDAO.listar();
 //                for (Anotacao a:anotacao) {
 //                    System.out.println(a);
-//                }
-//                ldoa= new AnotacaoDAO();
-//                List<Anotacao> anotacao = ldoa.listar();
-//                for (Anotacao a:anotacao) {
-//                    System.out.println(a);
-//                }
+//               }
+                ldoa= new AnotacaoDAO();
+                List<Anotacao> anotacao = ldoa.listar();
+                for (Anotacao a:anotacao) {
+                   System.out.println(a);
+               }
             }
 
 
         }while(opcao != 0);
 
-//       List<Categoria> categorias =  dao.findAll();
-//        for (int i = 0; i < categorias.size(); i++) {
-//            System.out.println(categorias.get(i));
-//        }
+        System.out.println("Fechando anotações");
 
-        AnotacaoDAO anotacaoDAO = new AnotacaoDAO();
-        List<Anotacao> anotacao = anotacaoDAO.listar();
-        for (Anotacao a:anotacao) {
-            System.out.println(a);
         }
-    }
+
 }

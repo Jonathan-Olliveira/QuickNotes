@@ -62,12 +62,12 @@ public class Anotacao {
 
     @Override
     public String toString() {
-        return "Anotacao{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", conteudo='" + conteudo + '\'' +
-                ", data=" + data +
-                ", categoria=" + categoria +
+        return "\nAnotacao{" +
+                "id= " + id +
+                ", titulo= '" + titulo + '\'' +
+                ", conteudo= '" + conteudo + '\'' +
+                ", data= " + data +
+                ", categoria= " + categoria +
                 '}';
     }
 
